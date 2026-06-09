@@ -1,4 +1,4 @@
-Require Import Coq.Strings.String.
+From Stdlib Require Import String.
 Require Import ExtLib.Structures.MonadWriter.
 Require Import ExtLib.Data.PPair.
 Require Import ExtLib.Data.Monads.WriterMonad.

@@ -1,12 +1,13 @@
-Require Import Coq.Relations.Relation_Definitions.
-Require Import Coq.Classes.RelationClasses.
-Require Import Coq.Classes.Morphisms.
+Require Import Stdlib.Relations.Relation_Definitions.
+Require Import Stdlib.Classes.RelationClasses.
+Require Import Stdlib.Classes.Morphisms.
 Require Import ExtLib.Core.RelDec.
 Require Import ExtLib.Structures.Reducible.
 Require Import ExtLib.Structures.Traversable.
 Require Import ExtLib.Structures.Applicative.
 Require Import ExtLib.Structures.Functor.
 Require Import ExtLib.Structures.FunctorLaws.
+Require Import ExtLib.Data.Eq.
 Require Import ExtLib.Data.Fun.
 Require Import ExtLib.Tactics.Injection.
 Require Import ExtLib.Tactics.Consider.

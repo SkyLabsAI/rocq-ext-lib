@@ -1,6 +1,6 @@
 (** [member] is the proof relevant version of [In] **)
-Require Import Coq.Lists.List.
-Require Import Relations RelationClasses.
+Require Import Stdlib.Lists.List.
+From Stdlib Require Import Relations RelationClasses.
 Require Import ExtLib.Core.RelDec.
 Require Import ExtLib.Data.SigT.
 Require Import ExtLib.Data.ListNth.
@@ -11,7 +11,6 @@ Require Import ExtLib.Tactics.EqDep.
 Set Implicit Arguments.
 Set Strict Implicit.
 Set Asymmetric Patterns.
-Set Asymmetric Patterns No Implicits.
 
 Section member.
   Context {T : Type}.

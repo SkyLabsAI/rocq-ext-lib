@@ -13,7 +13,7 @@
        = (Bool, Int)
  *)
 
-Require Import Coq.ZArith.ZArith_base Coq.Strings.String Coq.Strings.Ascii.
+From Stdlib Require Import ZArith String Ascii.
 Require Import ExtLib.Data.Monads.StateMonad ExtLib.Structures.Monads.
 
 Section StateGame.
@@ -55,4 +55,3 @@ Definition main : GameValue :=
 
 (* The following should return '2%Z' *)
 Compute main.
-

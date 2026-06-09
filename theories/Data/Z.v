@@ -1,4 +1,4 @@
-Require Import ZArith.
+From Stdlib Require Import ZArith.
 Require Import ExtLib.Core.RelDec.
 
 Set Implicit Arguments.

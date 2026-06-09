@@ -1,8 +1,8 @@
-From Coq Require Ascii.
-From Coq Require Import String.
-From Coq.Program Require Import Wf.
-From Coq Require Import BinPos.
-From Coq Require Import ZArith.
+From Stdlib Require Ascii.
+From Stdlib Require Import String.
+From Stdlib.Program Require Import Wf.
+From Stdlib Require Import BinPos.
+From Stdlib Require Import ZArith.
 Require Import ExtLib.Structures.Monoid.
 Require Import ExtLib.Structures.Reducible.
 Require Import ExtLib.Programming.Injection.
@@ -61,9 +61,10 @@ Fixpoint show_exact (s : string) : showM :=
   end.
 
 Module ShowNotation.
+  Declare Scope show_scope.
   Delimit Scope show_scope with show.
 
-  Notation "x << y" := (cat x%show y%show) (at level 100) : show_scope.
+  Notation "x << y" := (cat x%show y%show) (at level 100, right associativity) : show_scope.
   Coercion show_exact : string >-> showM.
   Definition _inject_char : ascii -> showM := inject.
   Coercion _inject_char : ascii >-> showM.

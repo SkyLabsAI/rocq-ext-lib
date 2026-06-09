@@ -1,9 +1,12 @@
-From Coq.Lists Require Import List.
-From Coq.ZArith Require Import ZArith.
-From Coq.micromega Require Import Lia.
+From Stdlib.Lists Require Import List.
+From Stdlib.ZArith Require Import ZArith.
+From Stdlib.micromega Require Import Lia.
 
 (** For backwards compatibility with hint locality attributes. *)
 Set Warnings "-unsupported-attributes".
+
+#[global]
+Create Rewrite HintDb list_rw.
 
 Lemma firstn_app_L : forall T n (a b : list T),
   n <= length a ->

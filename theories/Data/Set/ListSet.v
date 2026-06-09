@@ -1,4 +1,4 @@
-Require Import List.
+From Stdlib Require Import List.
 Require Import ExtLib.Structures.Sets.
 Require Import ExtLib.Core.RelDec.
 Require Import ExtLib.Data.List.

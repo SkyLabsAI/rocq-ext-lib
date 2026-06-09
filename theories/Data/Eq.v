@@ -7,7 +7,8 @@ Set Strict Implicit.
 (** For backwards compatibility with hint locality attributes. *)
 Set Warnings "-unsupported-attributes".
 
-Create HintDb eq_rw discriminated.
+#[global]
+Create Rewrite HintDb eq_rw.
 
 Lemma eq_sym_eq
 : forall T (a b : T) (pf : a = b) (F : T -> Type) val,

@@ -1,5 +1,5 @@
 (** Numbers up to @n@ **)
-Require Coq.Lists.List.
+Require Stdlib.Lists.List.
 Require Import ExtLib.Core.RelDec.
 Require Import ExtLib.Tactics.EqDep.
 Require Import ExtLib.Tactics.Injection.
@@ -7,7 +7,6 @@ Require Import ExtLib.Tactics.Injection.
 Set Implicit Arguments.
 Set Strict Implicit.
 Set Asymmetric Patterns.
-Set Asymmetric Patterns No Implicits.
 
 (** `fin n` corresponds to "naturals less than `n`",
     i.e. a finite set of size n
@@ -66,7 +65,7 @@ Fixpoint make (m n : nat) {struct m} : pf_lt n m -> fin m :=
     | S n , S m => fun pf => FS (make m n pf)
   end.
 
-Notation "'##' n" := (@make _ n I) (at level 0).
+Notation "'##' n" := (@make _ n I) (at level 1).
 
 Global Instance Injective_FS {n : nat} (a b : fin n)
   : Injective (FS a = FS b).

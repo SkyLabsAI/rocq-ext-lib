@@ -78,7 +78,7 @@ Section K.
   Qed.
 End K.
 
-Require Import List.
+From Stdlib Require Import List.
 
 Section Map.
   Variable T : Type.

@@ -1,10 +1,9 @@
-Require Import Coq.Classes.RelationClasses.
-Require Import Coq.Setoids.Setoid.
+Require Import Stdlib.Classes.RelationClasses.
+Require Import Stdlib.Setoids.Setoid.
 
 Set Implicit Arguments.
 Set Strict Implicit.
 Set Asymmetric Patterns.
-Set Asymmetric Patterns No Implicits.
 
 Section parametric.
   Variable T : Type.

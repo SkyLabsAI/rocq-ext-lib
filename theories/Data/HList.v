@@ -1,17 +1,16 @@
-From Coq Require Import List PeanoNat.
-Require Import Relations RelationClasses.
+From Stdlib Require Import List PeanoNat.
+From Stdlib Require Import Relations RelationClasses.
 Require Import ExtLib.Core.RelDec.
 Require Import ExtLib.Data.SigT.
 Require Import ExtLib.Data.Member.
 Require Import ExtLib.Data.ListNth.
 Require Import ExtLib.Data.Option.
 Require Import ExtLib.Tactics.
-Require Import Coq.Classes.Morphisms.
+Require Import Stdlib.Classes.Morphisms.
 
 Set Implicit Arguments.
 Set Strict Implicit.
 Set Asymmetric Patterns.
-Set Asymmetric Patterns No Implicits.
 Set Universe Polymorphism.
 Set Polymorphic Inductive Cumulativity.
 Set Printing Universes.
@@ -461,7 +460,7 @@ Section hlist.
       end.
     Proof.
       intros ls ls' ls''.
-      generalize (eq_sym (app_assoc_reverse ls ls' ls'')).
+      generalize (app_assoc ls ls' ls'').
       induction ls; simpl; intros.
       { rewrite (hlist_eta a); simpl.
         reflexivity. }

@@ -1,12 +1,12 @@
-Require Import Coq.Classes.RelationClasses.
-Require Import Coq.Lists.List.
+Require Import Stdlib.Classes.RelationClasses.
+Require Import Stdlib.Lists.List.
 Require Import ExtLib.Core.RelDec.
 Require Import ExtLib.Tactics.Consider.
 Require Import ExtLib.Structures.Maps.
 Require Import ExtLib.Structures.Monad.
 Require Import ExtLib.Structures.Reducible.
 Require Import ExtLib.Structures.Functor.
-From Coq Require Import
+From Stdlib Require Import
      Basics.
 From ExtLib Require Import
      Extras
@@ -74,7 +74,7 @@ Section keyed.
       end.
 
     Definition fold_alist' : T -> alist -> T :=
-      flip $ fold_left (flip $ uncurry f).
+      flip $ fold_left (flip $ deprecated_uncurry f).
 
     Lemma fold_alist_alt (map: alist) : forall acc: T,
         fold_alist acc map = fold_alist' acc map.

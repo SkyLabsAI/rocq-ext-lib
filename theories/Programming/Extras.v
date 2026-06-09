@@ -1,5 +1,5 @@
-Require Import List.
-Require Import String.
+From Stdlib Require Import List.
+From Stdlib Require Import String.
 
 Require Import ExtLib.Structures.Monads.
 Require Import ExtLib.Core.RelDec.
@@ -26,33 +26,33 @@ Import FunNotation.
 Definition deprecated_uncurry A B C (f:A -> B -> C) (x:A * B) : C := let (a,b) := x in f a b.
 
 #[deprecated(since = "8.13", note = "Use standard library.")]
-Notation uncurry := deprecated_uncurry.
+Abbreviation uncurry := deprecated_uncurry.
 
 Definition deprecated_curry  {A B C} (f : A * B -> C) (a : A) (b : B) : C := f (a, b).
 
 #[deprecated(since = "8.13", note = "Use standard library.")]
-Notation curry := deprecated_curry.
+Abbreviation curry := deprecated_curry.
 
 Lemma deprecated_uncurry_curry : forall A B C (f : A -> B -> C) a b,
-    curry (uncurry f) a b = f a b.
+    deprecated_curry (deprecated_uncurry f) a b = f a b.
 Proof.
-  unfold curry, uncurry.
+  unfold deprecated_curry, deprecated_uncurry.
   reflexivity.
 Qed.
 
 #[deprecated(since = "8.13", note = "Use standard library.")]
-Notation uncurry_curry := deprecated_uncurry_curry.
+Abbreviation uncurry_curry := deprecated_uncurry_curry.
 
 Lemma deprecated_curry_uncurry : forall A B C (f : A * B -> C) ab,
-    uncurry (curry f) ab = f ab.
+    deprecated_uncurry (deprecated_curry f) ab = f ab.
 Proof.
-  unfold uncurry, curry.
+  unfold deprecated_uncurry, deprecated_curry.
   destruct ab.
   reflexivity.
 Qed.
 
 #[deprecated(since = "8.13", note = "Use standard library.")]
-Notation curry_uncurry := deprecated_curry_uncurry.
+Abbreviation curry_uncurry := deprecated_curry_uncurry.
 
 Fixpoint deprecated_zip A B (xs:list A) (ys:list B) : list (A * B) :=
   match xs, ys with
@@ -63,7 +63,7 @@ Fixpoint deprecated_zip A B (xs:list A) (ys:list B) : list (A * B) :=
 .
 
 #[deprecated(note = "Use List.combine instead.")]
-Notation zip := deprecated_zip.
+Abbreviation zip := deprecated_zip.
 
 Fixpoint deprecated_unzip A B (xys:list (A * B)) : list A * list B :=
 match xys with
@@ -72,7 +72,7 @@ match xys with
 end.
 
 #[deprecated(note = "Use List.split instead.")]
-Notation unzip := deprecated_unzip.
+Abbreviation unzip := deprecated_unzip.
 
 Definition sum_tot {A} (x:A + A) : A := match x with inl a => a | inr a => a end.
 
@@ -94,4 +94,4 @@ end.
 
 Definition updateMany {K V} {kRealDec:RelDec (@eq K)}
   (ups:list (K * V)) (init:list (K * V)) : list (K * V) :=
-    fold_right (uncurry update) init ups.
+    fold_right (deprecated_uncurry update) init ups.

@@ -1,4 +1,4 @@
-From Coq.Logic Require Eqdep_dec.
+From Stdlib.Logic Require Eqdep_dec.
 Require EquivDec.
 Require Import ExtLib.Core.RelDec.
 Require Import ExtLib.Tactics.Consider.

@@ -1,4 +1,4 @@
-From Coq Require Import String Program PeanoNat.
+From Stdlib Require Import String Program PeanoNat.
 
 Require Import ExtLib.Tactics.Consider.
 Require Import ExtLib.Core.RelDec.
@@ -13,7 +13,7 @@ Set Strict Implicit.
 Local Notation "x >> y" := (match x with
                               | Eq => y
                               | z => z
-                            end) (only parsing, at level 30).
+                            end) (only parsing, at level 30, right associativity).
 
 Definition deprecated_bool_cmp (l r : bool) : comparison :=
   match l , r with
@@ -24,18 +24,18 @@ Definition deprecated_bool_cmp (l r : bool) : comparison :=
   end.
 
 #[deprecated(since="8.12",note="Use Bool.compare instead.")]
-Notation bool_cmp := deprecated_bool_cmp.
+Abbreviation bool_cmp := deprecated_bool_cmp.
 
 Definition deprecated_ascii_cmp (l r : Ascii.ascii) : comparison :=
   match l , r with
     | Ascii.Ascii l1 l2 l3 l4 l5 l6 l7 l8 ,
       Ascii.Ascii r1 r2 r3 r4 r5 r6 r7 r8 =>
-      bool_cmp l8 r8 >> bool_cmp l7 r7 >> bool_cmp l6 r6 >> bool_cmp l5 r5 >>
-      bool_cmp l4 r4 >> bool_cmp l3 r3 >> bool_cmp l2 r2 >> bool_cmp l1 r1
+      Bool.compare l8 r8 >> Bool.compare l7 r7 >> Bool.compare l6 r6 >> Bool.compare l5 r5 >>
+      Bool.compare l4 r4 >> Bool.compare l3 r3 >> Bool.compare l2 r2 >> Bool.compare l1 r1
   end.
 
 #[deprecated(since="8.15",note="Use Ascii.compare instead.")]
-Notation ascii_cmp := deprecated_ascii_cmp.
+Abbreviation ascii_cmp := deprecated_ascii_cmp.
 
 Global Instance RelDec_string : RelDec (@eq string) :=
 {| rel_dec := String.eqb |}.
@@ -56,11 +56,11 @@ Fixpoint deprecated_string_cmp (l r : string) : comparison :=
     | EmptyString , _ => Lt
     | _ , EmptyString => Gt
     | String l ls , String r rs =>
-      ascii_cmp l r >> deprecated_string_cmp ls rs
+      Ascii.compare l r >> deprecated_string_cmp ls rs
   end.
 
 #[deprecated(since="8.15",note="Use String.compare instead.")]
-Notation string_cmp := deprecated_string_cmp.
+Abbreviation string_cmp := deprecated_string_cmp.
 
 Section Program_Scope.
   Variable modulus : nat.

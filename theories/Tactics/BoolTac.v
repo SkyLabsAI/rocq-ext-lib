@@ -1,10 +1,13 @@
-Require Import Coq.Bool.Bool.
+Require Import Stdlib.Bool.Bool.
 
 Set Implicit Arguments.
 Set Strict Implicit.
 
 (** For backwards compatibility with hint locality attributes. *)
 Set Warnings "-unsupported-attributes".
+
+#[global]
+Create Rewrite HintDb bool_rw.
 
 #[global]
 Hint Rewrite negb_orb negb_andb negb_involutive if_negb : bool_rw.

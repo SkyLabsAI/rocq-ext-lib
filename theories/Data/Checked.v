@@ -1,7 +1,6 @@
 Set Implicit Arguments.
 Set Strict Implicit.
 Set Asymmetric Patterns.
-Set Asymmetric Patterns No Implicits.
 
 Section checked.
   Context {T : Type}.

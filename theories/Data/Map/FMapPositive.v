@@ -7,6 +7,9 @@ Require Import ExtLib.Tactics.Cases.
 Set Implicit Arguments.
 Set Strict Implicit.
 
+#[global]
+Create Rewrite HintDb pmap_rw.
+
 Section pmap.
   Variable T : Type.
   Inductive pmap : Type :=

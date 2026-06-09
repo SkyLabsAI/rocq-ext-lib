@@ -1,4 +1,4 @@
-Require Import Coq.Strings.Ascii.
+From Stdlib Require Import Ascii.
 Require Import ExtLib.Data.Bool.
 Require Import ExtLib.Tactics.Consider.
 Require Import ExtLib.Core.RelDec.

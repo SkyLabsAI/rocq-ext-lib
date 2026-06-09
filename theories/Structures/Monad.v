@@ -56,6 +56,7 @@ End monadic.
 
 Module MonadBaseNotation.
 
+  Declare Scope monad_scope.
   Delimit Scope monad_scope with monad.
 
   Notation "c >>= f" := (@bind _ _ _ _ c f) (at level 58, left associativity) : monad_scope.

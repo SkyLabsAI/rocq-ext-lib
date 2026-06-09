@@ -1,5 +1,4 @@
-Require Import Coq.Strings.Ascii.
-Require Import Coq.Strings.String.
+From Stdlib Require Import Ascii String.
 
 Set Implicit Arguments.
 Set Maximal Implicit Insertion.

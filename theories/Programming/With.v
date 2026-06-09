@@ -1,7 +1,6 @@
-Require Import Coq.Lists.List.
+Require Import Stdlib.Lists.List.
 
 Set Asymmetric Patterns.
-Set Asymmetric Patterns No Implicits.
 
 Fixpoint Ctor {T : Type} (ls : list {x : Type & T -> x}) : Type :=
   match ls with
@@ -57,6 +56,7 @@ Definition wrapWith {T U : Type} (t : T) (f : T -> U) (v : U)
   (_strt : Struct T) (_acc : Accessor f) :=
   @structWith _ _ t _ v acc.
 
+Declare Scope struct_scope.
 Delimit Scope struct_scope with record.
 
 Notation "{$ x 'with' y ':=' v $}" := (@wrapWith _ _ x y v _ _) : struct_scope.

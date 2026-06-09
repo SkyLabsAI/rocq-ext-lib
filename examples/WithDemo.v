@@ -1,4 +1,4 @@
-Require Import List.
+From Stdlib Require Import List.
 Require Import ExtLib.Programming.With.
 
 Record RTest : Set := mkRTest {
